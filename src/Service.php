@@ -15,6 +15,11 @@ class Service extends BaseService
      */
     public $composer = __DIR__ . '/../composer.json';
     
+    /**
+     * 设置
+     */
+    public $setting = __DIR__ . '/../resources/config/setting.php';
+    
     protected $slug = '';
     
     /**
