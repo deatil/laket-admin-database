@@ -1,0 +1,136 @@
+{extend name="$laket_admin_layout"/}
+
+{block name="main"}
+<div class="layui-card">
+    <div class="layui-card-header layui-bg-cyan">数据库还原</div>
+    <div class="layui-card-body">
+        <table class="layui-hide" id="table" lay-filter="table"></table>
+    </div>
+</div>
+{/block}
+
+{block name="layui"}{/block}
+
+{block name="script"}
+<script type="text/html" id="toolbar">
+</script>
+
+<script type="text/html" id="statusTool">
+    <div class="lake-admin-database-import-tip">-</div>
+</script>
+
+<script type="text/html" id="sizeTool">
+    <div>{{ layui.utils.renderSize(d.size) }}</div>
+</script>
+
+<script type="text/html" id="barTool">
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-xs" lay-event="import">导入</a>
+    <a class="layui-btn layui-btn-xs" lay-event="down">下载</a>
+</script>
+
+<script>
+layui.config({
+    base: 'admin/libs/layui-extend/'
+}).use(['table', 'form', 'utils'], function() {
+    var table = layui.table,
+        $ = layui.$,
+        form = layui.form,
+        layer = layui.layer;
+    table.render({
+        id: 'database',
+        elem: '#table',
+        toolbar: '#toolbar',
+        url: '{:laket_route("admin.database.restore")}',
+        method: 'post',
+        cols: [
+            [
+                { field: 'title', title: '备份名称' },
+                { field: 'part', width: 60, align:"center", title: '卷数' },
+                { field: 'compress', width: 80, align:"center", title: '压缩' },
+                { field: 'size', width: 120, title: '备份大小', templet: '#sizeTool' },
+                { field: 'date', width: 170, title: '备份时间' },
+                { field: '', width: 130, title: '状态', templet: '#statusTool' },
+                { fixed: 'right', width: 160, title: '操作', toolbar: '#barTool' }
+            ]
+        ],
+    });
+
+    //监听行工具事件
+    table.on('tool(table)', function(obj) {
+        var data = obj.data,code = ".";
+        if (obj.event === 'del') {
+            layer.confirm('确定删除这条数据？', { icon: 3, title: '提示' }, function(index) {
+                layer.close(index);
+                $.post('{:laket_route("admin.database.del-post")}', { 
+                    'time': data.time 
+                }, function(data) {
+                    if (data.code == 1) {
+                        if (data.url) {
+                            layer.msg(data.msg + ' 页面即将自动跳转~');
+                        } else {
+                            layer.msg(data.msg);
+                        }
+                        setTimeout(function() {
+                            if (data.url) {
+                                location.href = data.url;
+                            } else {
+                                location.reload();
+                            }
+                        }, 1500);
+                    } else {
+                        layer.msg(data.msg);
+                        setTimeout(function() {
+                            if (data.url) {
+                                location.href = data.url;
+                            }
+                        }, 1500);
+                    }
+
+                });
+            })
+        } else if (obj.event === 'down') {
+            window.open('{:laket_route("admin.database.download")}' + "?time=" + data.time, '_self')
+        } else if (obj.event === 'import') {
+            var self = this,
+                url = '{:laket_route("admin.database.import")}' + '?time=' + data.time;
+            
+            layer.confirm('确定导入此条数据库吗？', { icon: 3, title: '提示' }, function(index) {
+                layer.close(index);
+                
+                $.get(url, success, "json");
+                window.onbeforeunload = function() { 
+                    return "正在还原数据库，请不要关闭！";
+                }
+                return false;
+            });
+
+            function success(res) {
+                if (res.code) {
+                    if (res.data.gz) {
+                        res.msg += code;
+                        if (code.length === 5) {
+                            code = ".";
+                        } else {
+                            code += ".";
+                        }
+                    }
+                    $(self).parents('tr').find('.lake-admin-database-import-tip').text(res.msg);
+                    if (res.data.part) {
+                        $.get(url, { "part": res.data.part, "start": res.data.start },
+                            success,
+                            "json"
+                        );
+                    } else {
+                        window.onbeforeunload = function() { return null; }
+                    }
+                } else {
+                    $(self).parents('tr').find('.lake-admin-database-import-tip').text(res.msg);
+                }
+            }
+        }
+    });
+
+});
+</script>
+{/block}

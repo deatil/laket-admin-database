@@ -1,0 +1,42 @@
+{
+    "name": "laket/database",
+    "description": "The database is a laket-admin'extension.",
+    "keywords": [
+        "laket",
+        "database",
+        "admin",
+        "laket-admin"
+    ],
+    "homepage": "https://github.com/deatil/laket-admin-database",
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "deatil",
+            "email": "deatil@github.com",
+            "homepage": "https://github.com/deatil",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "lake/laket-admin":"1.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Laket\\Admin\\Database\\": "src"
+        }
+    },
+    "laket" : {
+        "title": "数据库管理",
+        "version":"1.0.0",
+        "adaptation":"1.0.*"
+    },
+    "extra": {
+        "think":{
+            "services":[
+                "Laket\\Admin\\Database\\Service"
+            ]
+        }
+    }
+}

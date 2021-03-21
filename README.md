@@ -1,2 +1,22 @@
-# laket-admin-database
-laket-admin-database
+## 数据库管理
+
+
+### 项目介绍
+
+*  基于laket-admin的数据库管理插件
+*  数据库备份、优化、修复及还原，你的系统维护帮手
+
+
+### 使用方法 
+
+*  composer安装
+    * `composer require lake/lake-admin-addon-database`
+*  本地安装
+    *  手动将模块上传到 `/flashs` 目录安装闪存插件
+*  最后在 `系统管理->闪存安装->全部` 安装添加的闪存插件
+*  注意：数据库还原请不要授权给`非超级管理员`账号
+
+
+### 开源协议
+
+*  部分代码来自于网络

@@ -1,0 +1,144 @@
+{extend name="$laket_admin_layout"/}
+
+{block name="main"}
+<div class="layui-card">
+    <div class="layui-card-header layui-bg-cyan">数据库备份</div>
+    <div class="layui-card-body">
+        <table class="layui-hide" id="table" lay-filter="table"></table>
+    </div>
+</div>
+{/block}
+
+{block name="script"}
+<script type="text/html" id="toolbar">
+    <div class="layui-btn-container">
+        <a class="layui-btn layui-btn-sm" id="export" href="{:laket_route('admin.database.export')}">立即备份</a>
+        <a class="layui-btn layui-btn-sm" id="optimize" href="{:laket_route('admin.database.optimize-post')}">优化表</a>
+        <a class="layui-btn layui-btn-sm" id="repair" href="{:laket_route('admin.database.repair-post')}">修复表</a>
+      </div>
+</script>
+
+<script type="text/html" id="size">
+    <div>{{ layui.utils.renderSize(d.data_length) }}</div>
+</script>
+<script type="text/html" id="info">
+    <div class="table-action table-{{ d.name }}">未备份</div>
+</script>
+
+<script>
+layui.use(['table', 'form', 'utils'], function() {
+    var table = layui.table,
+        $ = layui.$,
+        form = layui.form,
+        utils = layui.utils,
+        layer = layui.layer;
+        
+    table.render({
+        id: 'database',
+        elem: '#table',
+        toolbar: '#toolbar',
+        url: '{:laket_route("admin.database.index")}',
+        method: 'post', 
+        cols: [
+            [
+                { type: 'checkbox', fixed: 'left' },
+                { field: 'name', width: 200, title: '表名' },
+                { field: 'rows', width: 120, title: '数据量' },
+                { field: 'data_length', width: 120, title: '数据大小', templet: '#size' },
+                { field: 'create_time', width: 200, title: '创建时间' },
+                { field: 'comment', title: '说明' },
+                { field: 'info', width: 200, title: '备份状态', templet: '#info' },
+            ]
+        ],
+    });
+    
+    var $export = $("#export"),
+        $optimize = $("#optimize"),
+        $repair = $("#repair"),
+        tables;
+    var export_url = $export.attr('href');
+        
+    //优化or修复
+    $optimize.add($repair).click(function() {
+        var self = this,
+            checkStatus = table.checkStatus('database');
+        if (checkStatus.data.length <= 0) {
+            layer.msg("请选择需要操作的数据");
+            return false;
+        }
+        var a = [];
+        $(checkStatus.data).each(function(i, o) {
+            a.push(o.name);
+        });
+        $.post(self.href, { tables: a }, function(data) {
+            if (data.code) {
+                layer.msg(data.msg, { icon: 1 });
+            } else {
+                layer.msg(data.msg, { icon: 5 });
+            }
+        }, "json");
+        return false;
+    });
+    
+    // 提交备份
+    $export.click(function() {
+        var checkStatus = table.checkStatus('database');
+        if (checkStatus.data.length <= 0) {
+            layer.msg("请选择需要备份的数据");
+            return false;
+        }
+
+        var a = [];
+        $(checkStatus.data).each(function(i, o) {
+            a.push(o.name);
+        });
+        
+        tables = a;
+        
+        $export.parent().children().addClass("layui-btn-disabled");
+        $export.html("<i class='icon iconfont icon-fasong'></i>正在发送备份请求...");
+        $.post(export_url, { 
+            tables: a 
+        }, function(data) {
+                if (data.code) {
+                    $export.html(data.msg + "开始备份，请不要关闭本页面！");
+                    backup(data.data.tab);
+                    window.onbeforeunload = function() { return "正在备份数据库，请不要关闭！" }
+                } else {
+                    layer.msg(data.msg, { icon: 5 });
+                    $export.parent().children().removeClass("disabled");
+                    $export.html("立即备份");
+                }
+            },
+            "json"
+        );
+        return false;
+    });
+
+    function backup(tab, code) {
+        code && showmsg(tab.id, "开始备份...(0%)");
+        $.get(export_url, tab, function(data) {
+            if (data.code) {
+                showmsg(tab.id, data.msg);
+                if (!$.isPlainObject(data.data.tab)) {
+                    $export.parent().children().removeClass("layui-btn-disabled");
+                    $export.html("备份完成，点击重新备份");
+                    window.onbeforeunload = function() { return null }
+                    return;
+                }
+                backup(data.data.tab, tab.id != data.data.tab.id);
+            } else {
+                layer.msg(data.msg, { icon: 5 });
+                $export.parent().children().removeClass("disabled");
+                $export.html("立即备份");
+            }
+        });
+    }
+    
+    function showmsg(table_id, msg) {
+        $('.layui-table').find('.table-action.table-' + tables[table_id]).html(msg);
+    }
+
+});
+</script>
+{/block}
