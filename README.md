@@ -10,7 +10,7 @@
 ### 使用方法 
 
 *  composer安装
-    * `composer require lake/lake-admin-addon-database`
+    * `composer require laket/database`
 *  本地安装
     *  手动将模块上传到 `/flashs` 目录安装闪存插件
 *  最后在 `系统管理->闪存安装->全部` 安装添加的闪存插件
