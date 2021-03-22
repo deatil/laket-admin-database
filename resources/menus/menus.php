@@ -25,6 +25,7 @@ return [
                     "method" => "GET",
                     "slug" => "admin.database.index",
                     "menu_show" => 0,
+                    "listorder" => 5,
                 ],
                 [
                     "title" => "修复表",
@@ -32,6 +33,7 @@ return [
                     "method" => "POST",
                     "slug" => "admin.database.repair-post",
                     "menu_show" => 0,
+                    "listorder" => 10,
                 ],
                 [
                     "title" => "优化表",
@@ -39,6 +41,7 @@ return [
                     "method" => "POST",
                     "slug" => "admin.database.optimize",
                     "menu_show" => 0,
+                    "listorder" => 15,
                 ],
                 [
                     "title" => "还原表",
@@ -46,6 +49,7 @@ return [
                     "method" => "GET",
                     "slug" => "admin.database.import",
                     "menu_show" => 0,
+                    "listorder" => 20,
                 ],
                 [
                     "title" => "备份数据库",
@@ -53,6 +57,7 @@ return [
                     "method" => "GET",
                     "slug" => "admin.database.export",
                     "menu_show" => 0,
+                    "listorder" => 25,
                 ],
                 [
                     "title" => "备份数据库",
@@ -60,6 +65,7 @@ return [
                     "method" => "POST",
                     "slug" => "admin.database.export",
                     "menu_show" => 0,
+                    "listorder" => 30,
                 ],
             ],
         ],
@@ -78,6 +84,7 @@ return [
                     "method" => "GET",
                     "slug" => "admin.database.restore",
                     "menu_show" => 0,
+                    "listorder" => 5,
                 ],
                 [
                     "title" => "备份列表",
@@ -85,6 +92,7 @@ return [
                     "method" => "POST",
                     "slug" => "admin.database.restore-post",
                     "menu_show" => 0,
+                    "listorder" => 10,
                 ],
                 [
                     "title" => "删除备份",
@@ -92,6 +100,7 @@ return [
                     "method" => "POST",
                     "slug" => "admin.database.del-post",
                     "menu_show" => 0,
+                    "listorder" => 15,
                 ],
                 [
                     "title" => "备份数据库下载",
@@ -99,6 +108,7 @@ return [
                     "method" => "GET",
                     "slug" => "admin.database.download",
                     "menu_show" => 0,
+                    "listorder" => 20,
                 ],
             ],
         ],

@@ -24,7 +24,7 @@ class Database extends BaseController
         parent::initialize();
         
         // 获取插件配置
-        $config = laket_flash_setting('laket/database');
+        $config = laket_flash_setting('laket/laket-database');
         
         if (empty($config)) {
             $this->error('请先进行相关配置！');

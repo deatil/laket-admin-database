@@ -27,7 +27,7 @@ class Service extends BaseService
      */
     public function boot()
     {
-        Flash::extend('laket/database', __CLASS__);
+        Flash::extend('laket/laket-database', __CLASS__);
         
         $this->slug = 'laket-admin.flash.database';
     }
