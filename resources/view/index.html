@@ -12,7 +12,11 @@
 {block name="script"}
 <script type="text/html" id="toolbar">
     <div class="layui-btn-container">
-        <a class="layui-btn layui-btn-sm" id="export" href="{:laket_route('admin.database.export')}">立即备份</a>
+        <a class="layui-btn layui-btn-sm" 
+            id="export" 
+            href="{:laket_route('admin.database.export')}"
+            href-post="{:laket_route('admin.database.export-post')}"
+            >立即备份</a>
         <a class="layui-btn layui-btn-sm" id="optimize" href="{:laket_route('admin.database.optimize-post')}">优化表</a>
         <a class="layui-btn layui-btn-sm" id="repair" href="{:laket_route('admin.database.repair-post')}">修复表</a>
       </div>
@@ -37,7 +41,7 @@ layui.use(['table', 'form', 'utils'], function() {
         id: 'database',
         elem: '#table',
         toolbar: '#toolbar',
-        url: '{:laket_route("admin.database.index")}',
+        url: '{:laket_route("admin.database.index-post")}',
         method: 'post', 
         cols: [
             [
@@ -57,6 +61,7 @@ layui.use(['table', 'form', 'utils'], function() {
         $repair = $("#repair"),
         tables;
     var export_url = $export.attr('href');
+    var export_post_url = $export.attr('href-post');
         
     //优化or修复
     $optimize.add($repair).click(function() {
@@ -97,7 +102,7 @@ layui.use(['table', 'form', 'utils'], function() {
         
         $export.parent().children().addClass("layui-btn-disabled");
         $export.html("<i class='icon iconfont icon-fasong'></i>正在发送备份请求...");
-        $.post(export_url, { 
+        $.post(export_post_url, { 
             tables: a 
         }, function(data) {
                 if (data.code) {

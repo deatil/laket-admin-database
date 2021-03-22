@@ -11,7 +11,7 @@ return [
     "remark" => "",
     "children" => [
         [
-            "title" => "数据库备份",
+            "title" => "数据管理",
             "url" => "admin/database/index",
             "method" => "GET",
             "slug" => "admin.database.index",
@@ -19,6 +19,13 @@ return [
             "listorder" => 5,
             "menu_show" => 1,
             "children" => [
+                [
+                    "title" => "数据管理",
+                    "url" => "admin/database/index",
+                    "method" => "GET",
+                    "slug" => "admin.database.index",
+                    "menu_show" => 0,
+                ],
                 [
                     "title" => "修复表",
                     "url" => "admin/database/repair",
@@ -57,7 +64,7 @@ return [
             ],
         ],
         [
-            "title" => "数据库还原",
+            "title" => "备份列表",
             "url" => "admin/database/restore",
             "method" => "GET",
             "slug" => "admin.database.restore",
@@ -66,14 +73,14 @@ return [
             "listorder" => 10,
             "child" => [
                 [
-                    "title" => "数据库还原",
+                    "title" => "备份列表",
                     "url" => "admin/database/restore",
                     "method" => "GET",
                     "slug" => "admin.database.restore",
                     "menu_show" => 0,
                 ],
                 [
-                    "title" => "备份数据库",
+                    "title" => "备份列表",
                     "url" => "admin/database/restore",
                     "method" => "POST",
                     "slug" => "admin.database.restore-post",

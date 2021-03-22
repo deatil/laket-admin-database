@@ -41,7 +41,7 @@ layui.config({
         id: 'database',
         elem: '#table',
         toolbar: '#toolbar',
-        url: '{:laket_route("admin.database.restore")}',
+        url: '{:laket_route("admin.database.restore-post")}',
         method: 'post',
         cols: [
             [
@@ -60,7 +60,10 @@ layui.config({
     table.on('tool(table)', function(obj) {
         var data = obj.data,code = ".";
         if (obj.event === 'del') {
-            layer.confirm('确定删除这条数据？', { icon: 3, title: '提示' }, function(index) {
+            layer.confirm('确定删除这条数据？', { 
+                icon: 3, 
+                title: '提示' 
+            }, function(index) {
                 layer.close(index);
                 $.post('{:laket_route("admin.database.del-post")}', { 
                     'time': data.time 
@@ -95,7 +98,10 @@ layui.config({
             var self = this,
                 url = '{:laket_route("admin.database.import")}' + '?time=' + data.time;
             
-            layer.confirm('确定导入此条数据库吗？', { icon: 3, title: '提示' }, function(index) {
+            layer.confirm('确定导入此条数据库吗？', { 
+                icon: 3, 
+                title: '提示' 
+            }, function(index) {
                 layer.close(index);
                 
                 $.get(url, success, "json");
@@ -117,7 +123,10 @@ layui.config({
                     }
                     $(self).parents('tr').find('.lake-admin-database-import-tip').text(res.msg);
                     if (res.data.part) {
-                        $.get(url, { "part": res.data.part, "start": res.data.start },
+                        $.get(url, { 
+                            "part": res.data.part, 
+                            "start": res.data.start 
+                        },
                             success,
                             "json"
                         );

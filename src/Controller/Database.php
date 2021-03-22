@@ -211,7 +211,7 @@ class Database extends BaseController
             ];
             return json($result);
         } else {
-            return $this->fetch('laket-database::import');
+            return $this->fetch('laket-database::restore');
         }
     }
 
