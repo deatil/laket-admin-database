@@ -20,7 +20,7 @@ class Service extends BaseService
      */
     public $setting = __DIR__ . '/../resources/config/setting.php';
     
-    protected $slug = '';
+    protected $slug = 'laket-admin.flash.database';
     
     /**
      * 启动
@@ -28,8 +28,6 @@ class Service extends BaseService
     public function boot()
     {
         Flash::extend('laket/laket-database', __CLASS__);
-        
-        $this->slug = 'laket-admin.flash.database';
     }
     
     /**

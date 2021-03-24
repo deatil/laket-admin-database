@@ -6,7 +6,7 @@ return [
     "method" => "GET",
     "slug" => $this->slug,
     "icon" => "icon-bangzhushouce",
-    "listorder" => 100,
+    "listorder" => 35,
     "menu_show" => 1,
     "remark" => "",
     "children" => [
