@@ -75,7 +75,7 @@ return [
             "method" => "GET",
             "slug" => "admin.database.restore",
             "menu_show" => 1,
-            "icon" => "icon-undo",
+            "icon" => "icon-jifen",
             "listorder" => 10,
             "child" => [
                 [
