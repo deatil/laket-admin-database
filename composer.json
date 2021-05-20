@@ -1,6 +1,6 @@
 {
     "name": "laket/laket-database",
-    "description": "The database is a laket-admin'extension.",
+    "description": "laket-admin 数据库管理",
     "keywords": [
         "laket",
         "database",

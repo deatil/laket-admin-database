@@ -5,7 +5,7 @@ declare (strict_types = 1);
 namespace Laket\Admin\Database\Controller;
 
 use think\facade\Db;
-use Laket\Admin\Controller\Base as BaseController;
+use Laket\Admin\Flash\Controller as BaseController;
 use Laket\Admin\Database\Support\Database as DatabaseService;
 
 /**
