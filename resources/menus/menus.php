@@ -28,6 +28,14 @@ return [
                     "listorder" => 5,
                 ],
                 [
+                    "title" => "数据列表",
+                    "url" => "admin/database/index",
+                    "method" => "POST",
+                    "slug" => "admin.database.index-post",
+                    "menu_show" => 0,
+                    "listorder" => 6,
+                ],
+                [
                     "title" => "修复表",
                     "url" => "admin/database/repair",
                     "method" => "POST",
@@ -37,9 +45,9 @@ return [
                 ],
                 [
                     "title" => "优化表",
-                    "url" => "admin/database/optimize-post",
+                    "url" => "admin/database/optimize",
                     "method" => "POST",
-                    "slug" => "admin.database.optimize",
+                    "slug" => "admin.database.optimize-post",
                     "menu_show" => 0,
                     "listorder" => 15,
                 ],
@@ -61,9 +69,9 @@ return [
                 ],
                 [
                     "title" => "备份数据库",
-                    "url" => "admin/database/export-post",
+                    "url" => "admin/database/export",
                     "method" => "POST",
-                    "slug" => "admin.database.export",
+                    "slug" => "admin.database.export-post",
                     "menu_show" => 0,
                     "listorder" => 30,
                 ],
@@ -77,7 +85,7 @@ return [
             "menu_show" => 1,
             "icon" => "icon-jifen",
             "listorder" => 10,
-            "child" => [
+            "children" => [
                 [
                     "title" => "备份列表",
                     "url" => "admin/database/restore",

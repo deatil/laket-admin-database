@@ -276,7 +276,7 @@ class Database extends BaseController
         } elseif (is_numeric($part) && is_numeric($start)) {
             $list = session('backup_list');
             $db = new DatabaseService($list[$part], [
-                'path' => realpath(config('app.data_backup_path')) . DIRECTORY_SEPARATOR, 
+                'path' => realpath($this->databaseConfig['path']) . DIRECTORY_SEPARATOR, 
                 'compress' => $list[$part][2],
             ]);
             $start = $db->import($start);

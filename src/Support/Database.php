@@ -200,6 +200,9 @@ class Database
             $size = filesize($this->file[1]);
             $gz = fopen($this->file[1], 'r');
         }
+        
+        $this->fp = $gz;
+        
         $sql = '';
         if ($start) {
             $this->config['compress'] ? gzseek($gz, $start) : fseek($gz, $start);
