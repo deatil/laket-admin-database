@@ -24,9 +24,24 @@
 </script>
 
 <script type="text/html" id="barTool">
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-    <a class="layui-btn layui-btn-xs" lay-event="import">导入</a>
-    <a class="layui-btn layui-btn-xs" lay-event="down">下载</a>
+    {if laket_auth(['admin.database.import'])}
+        <a class="layui-btn layui-btn-xs" lay-event="import">导入</a>
+    {else}
+        <a href='javascript:;' class="layui-btn layui-btn-xs layui-btn-disabled">导入</a>
+    {/if}
+
+    {if laket_auth(['admin.database.download'])}
+        <a class="layui-btn layui-btn-xs" lay-event="down">下载</a>
+    {else}
+        <a href='javascript:;' class="layui-btn layui-btn-xs layui-btn-disabled">下载</a>
+    {/if}
+
+    {if laket_auth(['admin.database.del-post'])}
+        <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
+    {else}
+        <a href='javascript:;' class="layui-btn layui-btn-xs layui-btn-disabled">删除</a>
+    {/if}
+
 </script>
 
 <script>

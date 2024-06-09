@@ -2,7 +2,7 @@
 
 return [
     "title" => "数据库管理",
-    "url" => "admin/database/index",
+    "url" => "database/index",
     "method" => "GET",
     "slug" => $this->slug,
     "icon" => "icon-bangzhushouce",
@@ -12,7 +12,7 @@ return [
     "children" => [
         [
             "title" => "数据管理",
-            "url" => "admin/database/index",
+            "url" => "database/index",
             "method" => "GET",
             "slug" => "admin.database.index",
             "icon" => "icon-bangzhushouce",
@@ -21,7 +21,7 @@ return [
             "children" => [
                 [
                     "title" => "数据管理",
-                    "url" => "admin/database/index",
+                    "url" => "database/index",
                     "method" => "GET",
                     "slug" => "admin.database.index",
                     "menu_show" => 0,
@@ -29,7 +29,7 @@ return [
                 ],
                 [
                     "title" => "数据列表",
-                    "url" => "admin/database/index",
+                    "url" => "database/index",
                     "method" => "POST",
                     "slug" => "admin.database.index-post",
                     "menu_show" => 0,
@@ -37,7 +37,7 @@ return [
                 ],
                 [
                     "title" => "修复表",
-                    "url" => "admin/database/repair",
+                    "url" => "database/repair",
                     "method" => "POST",
                     "slug" => "admin.database.repair-post",
                     "menu_show" => 0,
@@ -45,23 +45,15 @@ return [
                 ],
                 [
                     "title" => "优化表",
-                    "url" => "admin/database/optimize",
+                    "url" => "database/optimize",
                     "method" => "POST",
                     "slug" => "admin.database.optimize-post",
                     "menu_show" => 0,
                     "listorder" => 15,
                 ],
                 [
-                    "title" => "还原表",
-                    "url" => "admin/database/import",
-                    "method" => "GET",
-                    "slug" => "admin.database.import",
-                    "menu_show" => 0,
-                    "listorder" => 20,
-                ],
-                [
                     "title" => "备份数据库",
-                    "url" => "admin/database/export",
+                    "url" => "database/export",
                     "method" => "GET",
                     "slug" => "admin.database.export",
                     "menu_show" => 0,
@@ -69,7 +61,7 @@ return [
                 ],
                 [
                     "title" => "备份数据库",
-                    "url" => "admin/database/export",
+                    "url" => "database/export",
                     "method" => "POST",
                     "slug" => "admin.database.export-post",
                     "menu_show" => 0,
@@ -79,7 +71,7 @@ return [
         ],
         [
             "title" => "备份列表",
-            "url" => "admin/database/restore",
+            "url" => "database/restore",
             "method" => "GET",
             "slug" => "admin.database.restore",
             "menu_show" => 1,
@@ -88,7 +80,7 @@ return [
             "children" => [
                 [
                     "title" => "备份列表",
-                    "url" => "admin/database/restore",
+                    "url" => "database/restore",
                     "method" => "GET",
                     "slug" => "admin.database.restore",
                     "menu_show" => 0,
@@ -96,7 +88,7 @@ return [
                 ],
                 [
                     "title" => "备份列表",
-                    "url" => "admin/database/restore",
+                    "url" => "database/restore",
                     "method" => "POST",
                     "slug" => "admin.database.restore-post",
                     "menu_show" => 0,
@@ -104,19 +96,27 @@ return [
                 ],
                 [
                     "title" => "删除备份",
-                    "url" => "admin/database/del",
+                    "url" => "database/del",
                     "method" => "POST",
                     "slug" => "admin.database.del-post",
                     "menu_show" => 0,
                     "listorder" => 15,
                 ],
                 [
+                    "title" => "还原表",
+                    "url" => "database/import",
+                    "method" => "GET",
+                    "slug" => "admin.database.import",
+                    "menu_show" => 0,
+                    "listorder" => 20,
+                ],
+                [
                     "title" => "备份数据库下载",
-                    "url" => "admin/database/download",
+                    "url" => "database/download",
                     "method" => "GET",
                     "slug" => "admin.database.download",
                     "menu_show" => 0,
-                    "listorder" => 20,
+                    "listorder" => 25,
                 ],
             ],
         ],

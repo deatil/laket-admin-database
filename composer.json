@@ -29,8 +29,9 @@
     },
     "laket" : {
         "title": "数据库管理",
-        "version": "1.2.2",
-        "adaptation": "1.2.*"
+        "version": "1.2.3",
+        "adaptation": "1.2.*",
+        "require": {}
     },
     "extra": {
         "think":{

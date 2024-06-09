@@ -12,13 +12,27 @@
 {block name="script"}
 <script type="text/html" id="toolbar">
     <div class="layui-btn-container">
-        <a class="layui-btn layui-btn-sm" 
-            id="export" 
-            href="{:laket_route('admin.database.export')}"
-            href-post="{:laket_route('admin.database.export-post')}"
-            >立即备份</a>
-        <a class="layui-btn layui-btn-sm" id="optimize" href="{:laket_route('admin.database.optimize-post')}">优化表</a>
-        <a class="layui-btn layui-btn-sm" id="repair" href="{:laket_route('admin.database.repair-post')}">修复表</a>
+        {if laket_auth(['admin.database.export'])}
+            <a class="layui-btn layui-btn-sm" 
+                id="export" 
+                href="{:laket_route('admin.database.export')}"
+                href-post="{:laket_route('admin.database.export-post')}"
+                >立即备份</a>
+        {else}
+            <a href='javascript:;' class="layui-btn layui-btn-sm layui-btn-disabled">立即备份</a>
+        {/if}
+
+        {if laket_auth(['admin.database.optimize-post'])}
+            <a class="layui-btn layui-btn-sm" id="optimize" href="{:laket_route('admin.database.optimize-post')}">优化表</a>
+        {else}
+            <a href='javascript:;' class="layui-btn layui-btn-sm layui-btn-disabled">优化表</a>
+        {/if}
+
+        {if laket_auth(['admin.database.repair-post'])}
+            <a class="layui-btn layui-btn-sm" id="repair" href="{:laket_route('admin.database.repair-post')}">修复表</a>
+        {else}
+            <a href='javascript:;' class="layui-btn layui-btn-sm layui-btn-disabled">修复表</a>
+        {/if}
       </div>
 </script>
 

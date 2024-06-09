@@ -27,7 +27,12 @@ class Database extends BaseController
         $config = laket_flash_setting('laket/laket-database');
         
         if (empty($config)) {
-            $this->error('请先进行相关配置！');
+            $config = [
+                'path'     => '/data/',
+                'part'     => 20971520,
+                'compress' => 1,
+                'level'    => 9,
+            ];
         }
         
         $this->databaseConfig = [
@@ -227,7 +232,7 @@ class Database extends BaseController
             $path = $this->databaseConfig['path'] . $name;
             $path = glob($path);
             if (empty($path)) {
-                $this->error('下载文件不存在！');
+                return $this->error('下载文件不存在！');
             }
             $file = $path[0];
             $file_part = pathinfo($file);
@@ -235,7 +240,7 @@ class Database extends BaseController
             $basename = $file_part['basename'];
             return download($file, $basename);
         } else {
-            $this->error('参数错误！');
+            return $this->error('参数错误！');
         }
     }
 
