@@ -4,7 +4,7 @@ return [
     "title" => "数据库管理",
     "url" => "database/index",
     "method" => "GET",
-    "slug" => $this->slug,
+    "slug" => $slug,
     "icon" => "icon-bangzhushouce",
     "listorder" => 1015,
     "menu_show" => 1,

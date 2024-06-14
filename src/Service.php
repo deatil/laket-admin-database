@@ -47,6 +47,7 @@ class Service extends BaseService
      */
     public function install()
     {
+        $slug = $this->slug;
         $menus = include __DIR__ . '/../resources/menus/menus.php';
         
         // 添加菜单
