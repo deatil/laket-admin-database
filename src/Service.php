@@ -20,6 +20,9 @@ class Service extends BaseService
      */
     public $setting = __DIR__ . '/../resources/config/setting.php';
     
+    /**
+     * 权限菜单 slug
+     */
     protected $slug = 'laket-admin.flash.database';
     
     /**

@@ -6,7 +6,7 @@ return [
     "method" => "GET",
     "slug" => $slug,
     "icon" => "icon-bangzhushouce",
-    "listorder" => 1015,
+    "listorder" => 1065,
     "menu_show" => 1,
     "remark" => "",
     "children" => [
@@ -16,7 +16,7 @@ return [
             "method" => "GET",
             "slug" => "admin.database.index",
             "icon" => "icon-bangzhushouce",
-            "listorder" => 5,
+            "listorder" => 15,
             "menu_show" => 1,
             "children" => [
                 [
@@ -25,7 +25,7 @@ return [
                     "method" => "GET",
                     "slug" => "admin.database.index",
                     "menu_show" => 0,
-                    "listorder" => 5,
+                    "listorder" => 15,
                 ],
                 [
                     "title" => "数据列表",
@@ -33,7 +33,7 @@ return [
                     "method" => "POST",
                     "slug" => "admin.database.index-post",
                     "menu_show" => 0,
-                    "listorder" => 6,
+                    "listorder" => 14,
                 ],
                 [
                     "title" => "修复表",
@@ -41,7 +41,7 @@ return [
                     "method" => "POST",
                     "slug" => "admin.database.repair-post",
                     "menu_show" => 0,
-                    "listorder" => 10,
+                    "listorder" => 13,
                 ],
                 [
                     "title" => "优化表",
@@ -49,7 +49,7 @@ return [
                     "method" => "POST",
                     "slug" => "admin.database.optimize-post",
                     "menu_show" => 0,
-                    "listorder" => 15,
+                    "listorder" => 12,
                 ],
                 [
                     "title" => "备份数据库",
@@ -57,7 +57,7 @@ return [
                     "method" => "GET",
                     "slug" => "admin.database.export",
                     "menu_show" => 0,
-                    "listorder" => 25,
+                    "listorder" => 11,
                 ],
                 [
                     "title" => "备份数据库",
@@ -65,7 +65,7 @@ return [
                     "method" => "POST",
                     "slug" => "admin.database.export-post",
                     "menu_show" => 0,
-                    "listorder" => 30,
+                    "listorder" => 10,
                 ],
             ],
         ],
@@ -84,7 +84,7 @@ return [
                     "method" => "GET",
                     "slug" => "admin.database.restore",
                     "menu_show" => 0,
-                    "listorder" => 5,
+                    "listorder" => 15,
                 ],
                 [
                     "title" => "备份列表",
@@ -92,7 +92,7 @@ return [
                     "method" => "POST",
                     "slug" => "admin.database.restore-post",
                     "menu_show" => 0,
-                    "listorder" => 10,
+                    "listorder" => 14,
                 ],
                 [
                     "title" => "删除备份",
@@ -100,7 +100,7 @@ return [
                     "method" => "POST",
                     "slug" => "admin.database.del-post",
                     "menu_show" => 0,
-                    "listorder" => 15,
+                    "listorder" => 13,
                 ],
                 [
                     "title" => "还原表",
@@ -108,7 +108,7 @@ return [
                     "method" => "GET",
                     "slug" => "admin.database.import",
                     "menu_show" => 0,
-                    "listorder" => 20,
+                    "listorder" => 12,
                 ],
                 [
                     "title" => "备份数据库下载",
@@ -116,7 +116,7 @@ return [
                     "method" => "GET",
                     "slug" => "admin.database.download",
                     "menu_show" => 0,
-                    "listorder" => 25,
+                    "listorder" => 11,
                 ],
             ],
         ],
